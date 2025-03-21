@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/img/favicon.svg" type="image/x-icon">
+    <!-- mi Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- mi CSS -->
+     <link rel="stylesheet" href="src/css/login.css">
+     <link rel="stylesheet" href="src/css/styles.css">
+     <link rel="stylesheet" href="src/css/spinner.css">
+    <title>Ligin + Credit</title>
+</head>
+<body>
+    <!-- Sipiner de carga  -->
+    <div id="spinner-container" class="spinner-container hidden">
+        <div class="spinner"></div>
+      </div>
+      
+    <div class="cont-login">
+        <div class="cont-logo">
+            <img src="src/img/logoBlue.png" alt="Logo + creditos">
+        </div>
+
+        <section class="sect-login">
+            <h2>Iniciar Sesión</h2>
+                <form id="login-form">
+                    <input id="email-usuario" type="email" placeholder=" Usuario o Email" required>
+                    <input id="password-usuario" type="password" placeholder=" Ingresa tu contraseña" required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+        </section>
+    </div>
+    <script src="src/js/login.js" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

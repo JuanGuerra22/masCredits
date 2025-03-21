@@ -1,0 +1,23 @@
+.cont-rutas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.cont-nuevas-rutas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.agregar-rutas{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 500px;
+    background-color: var(--color-cards);
+    border-radius: 10px;
+}

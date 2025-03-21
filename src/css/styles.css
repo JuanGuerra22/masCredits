@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', serif;
+}
+:root{
+    --color-principal: #1B95D8;
+    --color-cards: #cecece;
+    --color-botones: #E8771B;
+}
+.dosis {
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.toastify {
+    position: fixed !important;
+    z-index: 9999 !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+  /* estilos aplicados al logo */
+.banner{
+    width: 100%;
+    height: 160px;
+    background-color: var(--color-principal);
+}
+
+.cont-logo{
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+.cont-logo img{
+    width:80%;
+}
+
+h1{
+    font-size: 2rem;
+    padding: 10px 0;
+}
+/* -------------------------------- */
+
+/* Estilos para el Menú inferior */
+.cont-menu{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    height:70px;
+    background-color: #ffffff;
+    box-shadow: 0px 5px 15px  #727272
+}
+.menu{
+    display:flex;
+    width: 100%;
+}
+.menu ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.menu ul li{
+    list-style: none;
+}
+.menu ul li a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+}
+.menu span{
+    font-size: 2rem;
+}
+/* ----------------------------- */
