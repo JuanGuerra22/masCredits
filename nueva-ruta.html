@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Mis estilos CSS -->
+     <link rel="stylesheet" href="src/css/styles.css">
+     <link rel="stylesheet" href="src/css/nueva-ruta.css">
+     <link rel="stylesheet" href="src/css/components.css">
+    <title>Nueva Rutas</title>
+</head>
+<body>
+
+<div class="cont-nueva-ruta">
+    
+    <!-- Menú Inferior  -->
+    <section class="cont-menu">
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html"><span class="material-symbols-outlined">home</span>Home</a></li>
+                <li><a href="rutas.html" class="btn-menu"><span class="material-symbols-outlined relleno">route</span>Rutas</a></li>
+                <li><a href="#"><span class="material-symbols-outlined">pending</span>----</a></li>
+                <li><a href="#"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
+            </ul>
+        </nav>
+    </section>
+    <!-- ----------------- -->
+
+    <!-- Banner  -->
+    <section class="banner">
+        <div class="cont-logo">
+            <img src="src/img/logoWhite.png" alt="Logo + creditos">
+        </div>
+    </section>
+    <!-- --------- -->
+
+    <section class="nueva-ruta">
+        <h1>Nueva Ruta</h1>
+        
+            <form id="form-nueva-ruta">
+                <div class="form1">
+                    <label for="ruta">Nombre de la Ruta *</label>
+                    <input type="text" name="ruta" required>
+                    <label for="responsable">Responsable *</label>
+                    <input type="text" name="responsable" placeholder="Nombre Completo" required>
+                    <label for="cedula">Cédula *</label>
+                    <input type="number" name="cedula" placeholder="Eje: 123456" required>
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" name="ciudad" >
+                    <label for="direccion">Dirección</label>
+                    <input type="text" name="direccion">
+    
+                    <button id="continuar" class="btn-principal">Continuar</button>
+                </div>
+
+                <div class="hidden"> 
+                    <label for="valor">Valor del Préstamo *</label>
+                    <input type="number" name="valor" placeholder="$ 0.0" required>
+                    <label for="interes">Interés</label>
+                    <select name="interes" id="interes">
+                        <option value="20">20</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label for="posicion">Posición en la Ruta</label>
+                    <input type="number" required>
+                    <label for="cuota"># Cuotas</label>
+                    <input type="number" required>
+                    <label for="periodo">Periodicidad</label>
+                    <select name="periodo" id="periodo">
+                        <option value="diario">Diario</option>
+                        <option value="semanal">Semanal</option>
+                        <option value="mensual">Mensual</option>
+                    </select>
+                    <label for="seguro">Valor Seguro</label>
+                    <input type="number" required readonly>
+
+                    <button id="guardar-ruta" class="btn-principal">Guardar Ruta</button>
+                </div>
+            </form>
+      
+        
+    </section>
+
+</div>
+    
+</body>
+</html>
