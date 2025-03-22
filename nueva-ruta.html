@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- mi Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Mis estilos CSS -->
      <link rel="stylesheet" href="src/css/styles.css">
      <link rel="stylesheet" href="src/css/nueva-ruta.css">
@@ -41,43 +43,65 @@
 
     <section class="nueva-ruta">
         <h1>Nueva Ruta</h1>
-        
-            <form id="form-nueva-ruta">
-                <div class="form1">
+            <div id="barra-progreso">
+                <div id="progreso" class="progreso"></div>
+            </div>
+            <form id="form-nueva-ruta" class="form-nueva-ruta">
+                <div class="form1" id="form1">
                     <label for="ruta">Nombre de la Ruta *</label>
-                    <input type="text" name="ruta" required>
+                    <input type="text" id="ruta" name="ruta" required>
                     <label for="responsable">Responsable *</label>
-                    <input type="text" name="responsable" placeholder="Nombre Completo" required>
+                    <input type="text" id="responsable" name="responsable" placeholder="Nombre Completo" required>
                     <label for="cedula">Cédula *</label>
-                    <input type="number" name="cedula" placeholder="Eje: 123456" required>
+                    <input type="number" id="cedula" name="cedula" placeholder="Eje: 123456" required>
                     <label for="ciudad">Ciudad</label>
-                    <input type="text" name="ciudad" >
+                    <input type="text" id="ciudad" name="ciudad" >
                     <label for="direccion">Dirección</label>
-                    <input type="text" name="direccion">
-    
-                    <button id="continuar" class="btn-principal">Continuar</button>
+                    <input type="text" id="direccion" name="direccion">
+                    <div class="cont-next">
+                        <button type="button" id="continuar" class="next">Continuar</button>
+                    </div>
                 </div>
 
-                <div class="hidden"> 
-                    <label for="valor">Valor del Préstamo *</label>
-                    <input type="number" name="valor" placeholder="$ 0.0" required>
-                    <label for="interes">Interés</label>
-                    <select name="interes" id="interes">
-                        <option value="20">20</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="posicion">Posición en la Ruta</label>
-                    <input type="number" required>
-                    <label for="cuota"># Cuotas</label>
-                    <input type="number" required>
+                <div class="form2 hidden" id="form2">
+                    <div class="cont-valor-interes">
+                        <div class="valor">
+                            <label for="valor">Valor del Préstamo *</label>
+                            <input type="number" id="valor" name="valor" placeholder="$ 0.0" required>
+                        </div>
+                        <div class="interes">
+                            <label for="interes">Interés</label>
+                            <select id="interes" name="interes" id="interes" required>
+                                <option value="20">20</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div> 
+                    
+                    <div class="cont-ruta-cuota">
+                        <div class="ruta">
+                            <label for="posicion">Posición en la Ruta</label>
+                            <input type="number" id="posicion" name="posicion" required>
+                        </div>
+                        <div class="cuota">
+                            <label for="cuota"># Cuotas</label>
+                            <input type="number" id="cuota" name="cuota" required>
+                        </div>
+                        
+                    </div>
+                    
                     <label for="periodo">Periodicidad</label>
-                    <select name="periodo" id="periodo">
+                    <select name="periodo" id="periodo" required>
                         <option value="diario">Diario</option>
                         <option value="semanal">Semanal</option>
                         <option value="mensual">Mensual</option>
                     </select>
                     <label for="seguro">Valor Seguro</label>
-                    <input type="number" required readonly>
+                    <input type="number" name="seguro" id="seguro" readonly>
+
+                    <div class="cont-volver">
+                        <button type="button" id="volver" class="next">Volver</button>
+                    </div>
 
                     <button id="guardar-ruta" class="btn-principal">Guardar Ruta</button>
                 </div>
@@ -87,6 +111,7 @@
     </section>
 
 </div>
-    
+<script src="src/js/nueva-ruta.js" type="module"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>
