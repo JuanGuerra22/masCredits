@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/img/favicon.svg" type="image/x-icon">
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,9 +13,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Mis estilos CSS -->
      <link rel="stylesheet" href="src/css/styles.css">
-     <link rel="stylesheet" href="src/css/nueva-ruta.css">
      <link rel="stylesheet" href="src/css/components.css">
-    <title>Nueva Rutas</title>
+     <link rel="stylesheet" href="src/css/nueva-ruta.css">
+    <title>Nueva Ruta</title>
 </head>
 <body>
 
@@ -25,7 +26,8 @@
         <nav class="menu">
             <ul>
                 <li><a href="index.html"><span class="material-symbols-outlined">home</span>Home</a></li>
-                <li><a href="rutas.html" class="btn-menu"><span class="material-symbols-outlined relleno">route</span>Rutas</a></li>
+                <li><a href="rutas.html"><span class="material-symbols-outlined">route</span>Rutas</a></li>
+                <li><a href="nueva-ruta.html" class="btn-menu"><span class="material-symbols-outlined relleno">alt_route</span>+ Ruta</a></li>
                 <li><a href="#"><span class="material-symbols-outlined">pending</span>----</a></li>
                 <li><a href="#"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
             </ul>
@@ -43,11 +45,8 @@
 
     <section class="nueva-ruta">
         <h1>Nueva Ruta</h1>
-            <div id="barra-progreso">
-                <div id="progreso" class="progreso"></div>
-            </div>
             <form id="form-nueva-ruta" class="form-nueva-ruta">
-                <div class="form1" id="form1">
+                <div class="cont-form" id="cont-form">
                     <label for="ruta">Nombre de la Ruta *</label>
                     <input type="text" id="ruta" name="ruta" required>
                     <label for="responsable">Responsable *</label>
@@ -58,52 +57,9 @@
                     <input type="text" id="ciudad" name="ciudad" >
                     <label for="direccion">Dirección</label>
                     <input type="text" id="direccion" name="direccion">
-                    <div class="cont-next">
-                        <button type="button" id="continuar" class="next">Continuar</button>
-                    </div>
-                </div>
 
-                <div class="form2 hidden" id="form2">
-                    <div class="cont-valor-interes">
-                        <div class="valor">
-                            <label for="valor">Valor del Préstamo *</label>
-                            <input type="number" id="valor" name="valor" placeholder="$ 0.0" required>
-                        </div>
-                        <div class="interes">
-                            <label for="interes">Interés</label>
-                            <select id="interes" name="interes" id="interes" required>
-                                <option value="20">20</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                    </div> 
-                    
-                    <div class="cont-ruta-cuota">
-                        <div class="ruta">
-                            <label for="posicion">Posición en la Ruta</label>
-                            <input type="number" id="posicion" name="posicion" required>
-                        </div>
-                        <div class="cuota">
-                            <label for="cuota"># Cuotas</label>
-                            <input type="number" id="cuota" name="cuota" required>
-                        </div>
-                        
-                    </div>
-                    
-                    <label for="periodo">Periodicidad</label>
-                    <select name="periodo" id="periodo" required>
-                        <option value="diario">Diario</option>
-                        <option value="semanal">Semanal</option>
-                        <option value="mensual">Mensual</option>
-                    </select>
-                    <label for="seguro">Valor Seguro</label>
-                    <input type="number" name="seguro" id="seguro" readonly>
+                    <button type="submit" id="btn-guardar-ruta" class="btn-principal">Guardar Ruta</button>
 
-                    <div class="cont-volver">
-                        <button type="button" id="volver" class="next">Volver</button>
-                    </div>
-
-                    <button id="guardar-ruta" class="btn-principal">Guardar Ruta</button>
                 </div>
             </form>
       

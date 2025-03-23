@@ -10,8 +10,8 @@ export function mensajes(mensaje, tipo = "success"){
         position: "center", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: tipo === 'success' ? '#E8771B': 'red',
-          color: 'black'
+          background: tipo === 'success' ? '#E8771B': '#d60101e1',
+          color: '#ffffff'
         },
         onClick: function(){} // Callback after click
       }).showToast();

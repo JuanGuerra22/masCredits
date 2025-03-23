@@ -4,105 +4,18 @@
     align-items: center;
     width: 100%;
 }
+
 .nueva-ruta{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     align-items: center;
 }
 
-/* -------formulario------- */
 .form-nueva-ruta{
-    width: 85%;
+    width: 90%;
 }
-.form1{
+.cont-form{
     display: flex;
     flex-direction: column;
 }
-.form2{
-    display: flex;
-    flex-direction: column;
-    
-}
-.cont-valor-interes{
-    display: flex;
-    gap: 10px;
-}
-.valor{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-}
-.interes{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
-.cont-ruta-cuota{
-    display: flex;
-    gap: 10px;
-}
-.ruta{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-}
-.cuota{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
-/* ------------------ */
-
-/* clase para ocultar */
-.hidden{
-    display: none;
-}
-/* ------------------ */
-
-/* barra de progreso de formulario */
-#barra-progreso{
-    position: relative;
-    width: 50%;
-    background-color: #f0f0f0;
-    margin-bottom: 20px;
-}
-.progreso{
-    width: 50%;
-    height: 8px;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    transition: width 1s ease-in-out;;
-}
-.progreso.completa{
-    width: 100%;
-}
-
-
-
-
-/* ------------------------------- */
-
-
-/* boton para pasar el formulario */
-.cont-next{
-    display: flex;
-    justify-content: right;
-}
-.next{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    height: 40px;
-    text-decoration: none;
-    color: #000000;
-    font-size: 1.5rem;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
-    background-color: #4CAF50;
-    margin-top: 10px;
-}
-/* --------------------------------- */
-

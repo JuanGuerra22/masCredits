@@ -15,6 +15,7 @@
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
     width: 90%;
     height: auto;
     min-height: 300px;
@@ -22,8 +23,27 @@
     border-radius: 10px;
 }
 
+/* Boton de agregar nueva Ruta  */
+.add-ruta-btn{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    background-color: #1b96d8be;
+    margin: 0 15px 10px 0;
+}
+#add-ruta span{
+    font-size: 3rem;
+    color: #000000; 
+}
+/* ----------------------------- */
 
-/* Boton de agregar nueva ruta  */
+/* Boton de agregar nuevo cliente  */
 .cont-add-ruta{
     display: flex;
     position: absolute;
@@ -38,9 +58,27 @@
     margin: 0 15px 100px 0;
     
 }
-#add-ruta span{
+#add-cliente span{
     font-size: 3rem;
     color: #000000;
 }
-
 /* ----------------------------- */
+
+/* Div contenedor de las nuevas rutas que se agregan */
+.cont-nuevas-rutas{
+    display: flex;
+    position: absolute;
+    top: 0;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: auto;
+    background-color: aqua;
+}
+
+.div-prueba{
+    width: 80px;
+    height: 80px;
+    background-color: blueviolet;
+}
+/* ------------------------------------------------- */

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/img/favicon.svg" type="image/x-icon">
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- mi Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Mis estilos CSS -->
+     <link rel="stylesheet" href="src/css/styles.css">
+     <link rel="stylesheet" href="src/css/nuevo-cliente.css">
+     <link rel="stylesheet" href="src/css/components.css">
+    <title>Nuevo Cliente</title>
+</head>
+<body>
+
+<div class="cont-nuevo-cliente">
+    
+    <!-- Menú Inferior  -->
+    <section class="cont-menu">
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html"><span class="material-symbols-outlined">home</span>Home</a></li>
+                <li><a href="rutas.html"><span class="material-symbols-outlined">route</span>Rutas</a></li>
+                <li><a href="nuevo-cliente.html" class="btn-menu"><span class="material-symbols-outlined relleno">user_attributes</span>User</a></li>
+                <li><a href="#"><span class="material-symbols-outlined">pending</span>----</a></li>
+                <li><a href="#"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
+            </ul>
+        </nav>
+    </section>
+    <!-- ----------------- -->
+
+    <!-- Banner  -->
+    <section class="banner">
+        <div class="cont-logo">
+            <img src="src/img/logoWhite.png" alt="Logo + creditos">
+        </div>
+    </section>
+    <!-- --------- -->
+
+    <section class="nuevo-cliente">
+        <h1>Nuevo Cliente</h1>
+            <div id="barra-progreso">
+                <div id="progreso" class="progreso"></div>
+            </div>
+            <form id="form-nuevo-cliente" class="form-nuevo-cliente">
+                <div class="cont-form1" id="cont-form1">
+                    <p>Nombre de la Ruta (Se Carga Automaticamente)</p>
+                    <p>Resposable Ruta (Se Carga Automaticamente)</p>
+                    <label for="nombre-cliente">Nombre Cliente *</label>
+                    <input type="text" id="nombre-cliente" name="nombre-cliente" placeholder="Nombre Completo" required>
+                    <label for="cedula">Cédula *</label>
+                    <input type="number" id="cedula" name="cedula" placeholder="Eje: 123456" required>
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad" >
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion">
+                    <div class="cont-next">
+                        <button type="button" id="continuar" class="next">Continuar</button>
+                    </div>
+                </div>
+
+                <div class="cont-form2 hidden" id="cont-form2">
+                    <div class="cont-valor-interes">
+                        <div class="valor">
+                            <label for="valor">Valor del Préstamo *</label>
+                            <input type="number" id="valor" name="valor" placeholder="$ 0.0" required>
+                        </div>
+                        <div class="interes">
+                            <label for="interes">Interés *</label>
+                            <select id="interes" name="interes" id="interes" required>
+                                <option value="20">20</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div> 
+                    
+                    <div class="cont-ruta-cuota">
+                        <div class="ruta">
+                            <label for="posicion">Posición en la Ruta *</label>
+                            <input type="number" id="posicion" name="posicion" required>
+                        </div>
+                        <div class="cuota">
+                            <label for="cuota"># Cuotas *</label>
+                            <input type="number" id="cuota" name="cuota" required>
+                        </div>
+                        
+                    </div>
+                    
+                    <label for="periodo">Periodicidad *</label>
+                    <select name="periodo" id="periodo" required>
+                        <option value="diario">Diario</option>
+                        <option value="semanal">Semanal</option>
+                        <option value="mensual">Mensual</option>
+                    </select>
+                    <label for="seguro">Valor Seguro</label>
+                    <input type="number" name="seguro" id="seguro" readonly>
+
+                    <div class="cont-volver">
+                        <button type="button" id="volver" class="next">Volver</button>
+                    </div>
+
+                    <button type="submit" id="guardar-ruta" class="btn-principal">Guardar Cliente</button>
+                </div>
+            </form>
+      
+        
+    </section>
+
+</div>
+<script src="src/js/nuevo-cliente.js" type="module"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>
