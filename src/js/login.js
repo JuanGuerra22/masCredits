@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { auth } from "./firebase.js";
+import { auth} from "./firebase.js";
 import {mensajes} from './mensajes.js'
 
 
@@ -19,6 +19,8 @@ if(loginForm){
         }
         try {
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredentials.user
+            console.log("Usuario autenticado:", user.email);
          
             spinner.classList.remove('hidden');
 
@@ -29,4 +31,6 @@ if(loginForm){
                 mensajes('Usuario no registrado o Incorrecto', "fail");
         }
     });
+}else {
+    console.error("No se encontró el formulario de login.");
 }

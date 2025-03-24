@@ -18,6 +18,11 @@
     <title>Nueva Ruta</title>
 </head>
 <body>
+    <!-- Sipiner de carga  -->
+    <div id="spinner-container" class="spinner-container hidden">
+        <div class="spinner"></div>
+    </div>
+      
 
 <div class="cont-nueva-ruta">
     
@@ -29,7 +34,7 @@
                 <li><a href="rutas.html"><span class="material-symbols-outlined">route</span>Rutas</a></li>
                 <li><a href="nueva-ruta.html" class="btn-menu"><span class="material-symbols-outlined relleno">alt_route</span>+ Ruta</a></li>
                 <li><a href="#"><span class="material-symbols-outlined">pending</span>----</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
+                <li><a href="#" id="salir-icon"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
             </ul>
         </nav>
     </section>
@@ -67,7 +72,11 @@
     </section>
 
 </div>
-<script src="src/js/nueva-ruta.js" type="module"></script>
+<!-- Script de Toastify -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- Mi Script  -->
+<script src="src/js/nueva-ruta.js" type="module"></script>
+<script src="src/js/script.js" type="module"></script>
+
 </body>
 </html>

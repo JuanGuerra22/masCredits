@@ -1,8 +1,10 @@
 
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js"
-  // TODO: Add SDKs for Firebase products that you want to use
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js"
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js"
+  
+
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
@@ -18,3 +20,4 @@
   // Initialize Firebase
   export const app = initializeApp(firebaseConfig);
   export const auth = getAuth(app)
+  export const db = getFirestore(app);
