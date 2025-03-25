@@ -4,20 +4,17 @@ import { collection, onSnapshot, doc} from "https://www.gstatic.com/firebasejs/1
 
 
 const nuevasRutas = document.getElementById('nuevas-rutas');
+const spinner = document.getElementById('spinner-container');
 
-
-// btnAddRuta.addEventListener('click', ()=>{
-//     const nuevoDiv = document.createElement('div');
-//     nuevoDiv.classList.add('div-prueba')
-//     nuevasRutas.appendChild(nuevoDiv);
-// });
 
 const mostrarRutas = ()=>{
     const nRutas = collection(db, 'nuevas-rutas');
+    spinner.classList.remove('hidden');
 
     onSnapshot(nRutas, (snapshot)=>{
             nuevasRutas.innerHTML = '';
         snapshot.forEach((doc) => {
+            spinner.classList.add('hidden');
             const rutas = doc.data();
             const nuevoDiv = document.createElement('div');
             nuevoDiv.classList.add('div-prueba')
