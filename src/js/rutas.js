@@ -13,8 +13,9 @@ const mostrarRutas = ()=>{
 
     onSnapshot(nRutas, (snapshot)=>{
             nuevasRutas.innerHTML = '';
-        snapshot.forEach((doc) => {
             spinner.classList.add('hidden');
+        snapshot.forEach((doc) => {
+            
             const rutas = doc.data();
             const nuevoDiv = document.createElement('div');
             nuevoDiv.classList.add('div-prueba')
@@ -24,8 +25,14 @@ const mostrarRutas = ()=>{
                 <p>Cedula: <span>${rutas.cedula} </span></p>
             `
             nuevasRutas.appendChild(nuevoDiv);
+            // Agregar evento de clic al div
+            nuevoDiv.addEventListener('click', () => {
+                 // Redirigir a la página de clientes con el ID de la ruta
+                 window.location.href = `clientes.html?id=${doc.id}`;
+            });
         });
     });
 }
 
 mostrarRutas();
+

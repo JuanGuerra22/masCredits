@@ -1,14 +1,14 @@
 .cont-rutas{
     display: flex;
     flex-direction: column;
-    position: relative;
     align-items: center;
     width: 100%;
     height: 100%;
-    margin-bottom: 85px;
+    margin-bottom: 75px;
 }
 .rutas{
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -16,7 +16,6 @@
 
 .agregar-rutas{
     display: flex;
-   
     justify-content: center;
     width: 90%;
     height: auto;
@@ -28,7 +27,7 @@
 /* Boton de agregar NUEVA RUTA */
 .cont-add-ruta{
     display: flex;
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -37,8 +36,7 @@
     width: 70px;
     height: 70px;
     background-color: #1b96d8be;
-    margin: 0 15px 100px 0;
-    
+    margin: 0 15px 95px 0;
 }
 #add-ruta span{
     font-size: 3rem;

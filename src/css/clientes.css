@@ -1,0 +1,57 @@
+.cont-clientes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cont-add-ruta{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    background-color: #1b96d8be;
+    margin: 0 15px 95px 0;
+}
+
+#add-cliente span{
+    font-size: 2.5rem;
+    color: #000000; 
+}
+
+#default-text{
+    font-size: 2rem;
+    text-align: center;
+    color: #0000007c;
+}
+#lista-clientes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+}
+
+/* Diseño para los divs agregados para los clientes  */
+.cliente-div{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 80%;
+    background-color: aqua;
+    border-radius: 15px;
+}
+
+.cliente-div p{
+    font-size: 1.2rem;
+}
+.cliente-div p span{
+    font-size: 1.4rem;
+    font-weight: 800;
+}
