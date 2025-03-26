@@ -103,4 +103,9 @@
     margin-top: 10px;
 }
 /* --------------------------------- */
-
+/* Informacion que se muestra en el formulario de nuevo cliente. */
+.info-ruta{
+    font-size: 1rem;
+    color: #00000071;
+    font-weight: 600;
+}

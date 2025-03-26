@@ -1,5 +1,5 @@
 import {mensajes} from './mensajes.js';
-import { collection, doc, addDoc} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, doc, runTransaction, query, orderBy, getDocs, getCountFromServer } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { db } from './firebase.js'
 
 
@@ -20,7 +20,6 @@ const cuota = document.getElementById('cuota');
 const periodo = document.getElementById('periodo');
 const seguro = document.getElementById('seguro');
 
-const btnGuardarRuta = document.getElementById('guardar-ruta');
 const formulario = document.getElementById('form-nuevo-cliente');
 
 next.addEventListener('click', (e) =>{
@@ -65,15 +64,15 @@ function obtenerParametrosURL() {
 
 const { id, ruta } = obtenerParametrosURL();
 
-console.log(ruta)
-
 // Mostrar información de la ruta en el formulario
 const nombreRutaP = document.createElement('p');
-nombreRutaP.innerHTML = `Nombre de la Ruta: ${ruta.nombreRuta}` 
+nombreRutaP.classList.add('info-ruta');
+nombreRutaP.innerHTML = `Ruta: ${ruta.nombreRuta}` 
 formUno.insertBefore(nombreRutaP, formUno.children[0]);
 
 const responsableRutaP = document.createElement('p');
-responsableRutaP.innerHTML = `Responsable: ${ruta.responsableRuta}` ;
+responsableRutaP.classList.add('info-ruta');
+responsableRutaP.innerHTML = `${ruta.responsableRuta}` ;
 formUno.insertBefore(responsableRutaP, formUno.children[1]);
 
 
@@ -95,10 +94,32 @@ formulario.addEventListener('submit', async (e) => {
     };
 
     try {
-        const clientesRef = collection(db, 'nuevas-rutas', id, 'clientes');
-        await addDoc(clientesRef, datosCliente);
-        alert('Cliente guardado con éxito');
-        window.location.href = `clientes.html?id=${id}`;
+        await runTransaction(db, async (transaction) => {
+            const clientesRef = collection(db, 'nuevas-rutas', id, 'clientes');
+
+            // 1. Obtener todos los clientes ordenados por posición
+            const clientesQuery = query(clientesRef, orderBy('posicion'));
+            const clientesSnapshot = await getDocs(clientesQuery);
+            const clientes = clientesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            // 2. Ajustar posiciones si es necesario
+            for (const cliente of clientes) {
+                if (cliente.posicion >= datosCliente.posicion) {
+                    const clienteRef = doc(db, 'nuevas-rutas', id, 'clientes', cliente.id);
+                    transaction.update(clienteRef, { posicion: cliente.posicion + 1 });
+
+                }
+            }
+
+            // 3. Agregar el nuevo cliente
+            const nuevoClienteRef = doc(clientesRef);
+            transaction.set(nuevoClienteRef, datosCliente);
+        });
+        mensajes('Cliente guardado con éxito');
+        setTimeout(()=>{
+            window.location.href = `clientes.html?id=${id}`;
+        }, 1000);
+        
     } catch (error) {
         console.error('Error al guardar cliente:', error);
         alert('Error al guardar cliente');
@@ -111,4 +132,25 @@ function calcularSeguro(valorPrestamo) {
 
 valor.addEventListener('input', () => {
     seguro.value = calcularSeguro(parseFloat(valor.value));
+});
+
+
+
+// Funcion para contar la cantidad de clientes que tiene una ruta 
+
+async function contarClientes(rutaId){
+    try {
+        const clienteRef = collection(db, 'nuevas-rutas', rutaId, 'clientes');
+        const snapshot = await getCountFromServer(clienteRef);
+        const cantidadClientes = snapshot.data().count;
+        return cantidadClientes;
+    } catch (error) {
+        console.log('Error al obtener la cantidad de clientes', error);
+        return 0;
+    }
+}
+
+contarClientes(id).then(cantidad => {
+    console.log(`La ruta tiene ${cantidad} clientes.`);
+    posicion.value = cantidad + 1;
 });

@@ -13,14 +13,17 @@
     flex-direction: column;
     margin-top: 5px;
     width: 85%;
-    background-color: var(--color-cards);
+    background-color:var(--color-cards);
     border-radius: 5px;
     padding: 20px 10px;
 }
 
 .contenido p{
     font-size: 1.3rem;
-    font-weight: 700;
+    font-weight: 500;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: #0000002f 2px dotted;
 }
 
 .nom-user{
@@ -37,4 +40,11 @@
     font-size: 1.2rem;
     color: #000000bd;
     font-weight: 300;
+}
+/* ------------------------- */
+
+.datos{
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-left: 15px;
 }
