@@ -1,6 +1,6 @@
     import { collection, onSnapshot, doc, getDoc, orderBy, query } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
     import {db} from './firebase.js';
-    import {formatearValor} from './formato-num.js';
+    import { contClientesRuta, formatearValor } from './functions.js'
 
 
     const listaClientes = document.getElementById('lista-clientes');
@@ -54,4 +54,8 @@
         }).catch((error) => {
             console.error('Error al obtener el documento de la ruta:', error);
         });
+    });
+
+contClientesRuta().then(cantidad => {
+        console.log('cantidad de clientes es:::', cantidad);    
     });

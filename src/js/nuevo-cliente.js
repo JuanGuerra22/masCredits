@@ -1,6 +1,7 @@
 import {mensajes} from './mensajes.js';
 import { collection, doc, runTransaction, query, orderBy, getDocs, getCountFromServer } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-import { db } from './firebase.js'
+import { db } from './firebase.js';
+import {obtenerParametrosURL} from './functions.js';
 
 
 const next = document.getElementById('continuar');
@@ -21,6 +22,9 @@ const periodo = document.getElementById('periodo');
 const seguro = document.getElementById('seguro');
 
 const formulario = document.getElementById('form-nuevo-cliente');
+
+const spinner = document.getElementById('spinner-container');
+
 
 next.addEventListener('click', (e) =>{
     e.preventDefault(); 
@@ -46,22 +50,6 @@ volver.addEventListener('click', (e) =>{
     })
 });
 
-
-// Obtener parámetros de la URL
-function obtenerParametrosURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return {
-        id: urlParams.get('id'),
-        ruta: {
-            nombreRuta: urlParams.get('nombreRuta'),
-            responsableRuta: urlParams.get('responsableRuta'),
-            cedula: urlParams.get('cedula'),
-            ciudad: urlParams.get('ciudad'),
-            direccion: urlParams.get('direccion')
-        }
-    };
-}
-
 const { id, ruta } = obtenerParametrosURL();
 
 // Mostrar información de la ruta en el formulario
@@ -79,7 +67,7 @@ formUno.insertBefore(responsableRutaP, formUno.children[1]);
 // Evento de envío del formulario
 formulario.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    spinner.classList.remove('hidden');
     const datosCliente = {
         nombreCliente: nombreCliente.value,
         cedula: cedula.value,
@@ -115,6 +103,7 @@ formulario.addEventListener('submit', async (e) => {
             const nuevoClienteRef = doc(clientesRef);
             transaction.set(nuevoClienteRef, datosCliente);
         });
+  
         mensajes('Cliente guardado con éxito');
         setTimeout(()=>{
             window.location.href = `clientes.html?id=${id}`;
