@@ -33,6 +33,7 @@
                     <p>Cédula: <span>${cliente.cedula}</span></p>
                     <p>Valor Préstamo: <span>${formatearValor(cliente.valor)}</span></p>
                     <p>Valor Seguro: <span>${formatearValor(cliente.seguro)}</span></p>
+                    <p> <b>Total a Pagar:</b> <span>${formatearValor(cliente.totalPagar)}</span></p>
                 `;
                 listaClientes.appendChild(clienteDiv);
             });

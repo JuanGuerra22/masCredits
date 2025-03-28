@@ -72,12 +72,12 @@
                 <div class="cont-form2 hidden" id="cont-form2">
                     <div class="cont-valor-interes">
                         <div class="valor">
-                            <label for="valor">Valor del Préstamo *</label>
-                            <input type="number" id="valor" name="valor" placeholder="$ 0.0" required>
+                            <label for="valor">Valor del Préstamo $ *</label>
+                            <input type="number" id="valor" class="input-moneda" name="valor" placeholder="$ 0.0" required>
                         </div>
                         <div class="interes">
-                            <label for="interes">Interés *</label>
-                            <select id="interes" name="interes" id="interes" required>
+                            <label for="interes">Interés %*</label>
+                            <select id="interes" name="interes" required>
                                 <option value="20">20</option>
                                 <option value="10">10</option>
                             </select>
@@ -102,9 +102,18 @@
                         <option value="semanal">Semanal</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <label for="seguro">Valor Seguro</label>
-                    <input type="number" name="seguro" id="seguro" readonly>
-
+                    <div class="cont-seg-total">
+                        <div class="seguro">
+                            <label for="seguro">Valor Seguro $</label>
+                            <input type="number" name="seguro" id="seguro" class="input-moneda" readonly>
+                        </div>
+                        <div class="total-pagar">
+                            <label for="total-pagar">Total a pagar $</label>
+                            <input type="number" name="total" id="total-pagar" class="input-moneda" readonly>
+                        </div>
+                        
+                    </div>
+                    
                     <div class="cont-volver">
                         <button type="button" id="volver" class="next">Volver</button>
                     </div>

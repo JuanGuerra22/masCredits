@@ -20,6 +20,7 @@ const posicion = document.getElementById('posicion');
 const cuota = document.getElementById('cuota');
 const periodo = document.getElementById('periodo');
 const seguro = document.getElementById('seguro');
+const totalPagar = document.getElementById('total-pagar');
 
 const formulario = document.getElementById('form-nuevo-cliente');
 
@@ -74,11 +75,12 @@ formulario.addEventListener('submit', async (e) => {
         ciudad: ciudad.value,
         direccion: direccion.value,
         valor: parseFloat(valor.value),
-        interes: parseInt(interes.value),
+        interes: parseFloat(interes.value),
         posicion: parseInt(posicion.value),
         cuota: parseInt(cuota.value),
         periodo: periodo.value,
         seguro: parseFloat(seguro.value) || 0, // Si seguro está vacío, guarda 0
+        totalPagar: parseFloat(totalPagar.value)
     };
 
     try {
@@ -118,11 +120,29 @@ formulario.addEventListener('submit', async (e) => {
 function calcularSeguro(valorPrestamo) {
     return valorPrestamo * 0.10; // Ejemplo: 10% del valor del préstamo
 }
+// Función para calcular el valor total a pagar
+function calTotalPago(valorPrestamo){
+    return valorPrestamo * (interes.value / 100) + valorPrestamo;
+}
+function actualizarTotalPagar() {
+    const valorNumerico = parseFloat(valor.value);
+    if (!isNaN(valorNumerico)) {
+        totalPagar.value = calTotalPago(valorNumerico);
+    } else {
+        totalPagar.value = ''; // O un valor predeterminado
+    }
+}
 
 valor.addEventListener('input', () => {
     seguro.value = calcularSeguro(parseFloat(valor.value));
+    totalPagar.value = calTotalPago(parseFloat(valor.value));
+    actualizarTotalPagar();
 });
 
+interes.addEventListener('change', ()=>{
+    totalPagar.value = calTotalPago(parseFloat(valor.value));
+})
+actualizarTotalPagar()
 
 
 // Funcion para contar la cantidad de clientes que tiene una ruta 

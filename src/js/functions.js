@@ -1,5 +1,5 @@
 import {db} from './firebase.js'
-import { collection, getCountFromServer, collectionGroup} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, getCountFromServer, collectionGroup, getDocs} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
 // Obtener parámetros de la URL
 export function obtenerParametrosURL() {
@@ -72,3 +72,23 @@ export function formatearValor(valor){
     });
 }
 // ---------------------------------------------------
+
+
+export async function calSaldoCartera(){
+    try{
+    const clienteRef = collectionGroup(db, 'clientes');
+    const snapshot = await getDocs(clienteRef);
+    let valorTotal = 0
+
+    snapshot.forEach( (doc) => {
+        const cliente = doc.data();
+        if(cliente.totalPagar){
+            valorTotal += cliente.totalPagar;
+        }
+    });
+    return valorTotal;
+    } catch{
+        console.error('Error al obtener el valor total de los préstamos:', error);
+        return 0; // Devuelve 0 en caso de error
+    }
+}
