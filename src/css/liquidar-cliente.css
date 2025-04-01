@@ -1,0 +1,86 @@
+.cont-liquidar-clientes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 85px;
+}
+
+#liquidar-cliente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    width: 95%;
+}
+#liquidar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.div-cliente{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 70%;
+    padding-left: 10px;
+    background-color: aqua;
+}
+
+.div-cliente p{
+    font-size: 1rem;
+}
+.div-cliente span{
+    font-size: 1rem;
+}
+#posicion-ruta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #00000094;
+    margin: 5px;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    background-color: rgb(255, 255, 255);
+}
+
+/* contenedor de las flechas left and right */
+
+
+.arrow-left{
+    position: absolute;
+    left: 10px;
+}
+.arrow-left span{
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+.arrow-right{
+    position: absolute;
+    right: 10px;
+}
+.arrow-right span{
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+/* ----------------------------------------- */
+
+.cont-abono{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}

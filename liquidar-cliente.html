@@ -12,19 +12,19 @@
     <!-- mi CSS -->
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="src/css/components.css">
-    <link rel="stylesheet" href="src/css/clientes.css">
-    <title>Clientes</title>
+    <link rel="stylesheet" href="src/css/liquidar-cliente.css">
+    <title>Liquidar Cliente</title>
 </head>
 <body>
 
-<div class="cont-clientes">
+<div class="cont-liquidar-clientes">
      <!-- Menú Inferior  -->
      <section class="cont-menu">
         <nav class="menu">
             <ul>
                 <li><a href="index.html"><span class="material-symbols-outlined">home</span>Home</a></li>
                 <li><a href="rutas.html"><span class="material-symbols-outlined">route</span>Rutas</a></li>
-                <li><a href="" class="btn-menu"><span class="material-symbols-outlined relleno">user_attributes</span>Users</a></li>
+                <li><a href="" class="btn-menu"><span class="material-symbols-outlined relleno">person_edit</span>User</a></li>
                 <li><a href="#" id="salir-icon"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
             </ul>
         </nav>
@@ -40,18 +40,19 @@
     <!-- --------- -->
 
 
-    <h1>Clientes de la Ruta</h1>
-    <div id="info-ruta"></div>
+    <h1>Liquidar Cliente</h1>
+    <div id="liquidar-cliente">
+        <div class="arrow-left"><span id="arrow-left" class="material-symbols-outlined">arrow_circle_left</span></div>
+        <div class="arrow-right"><span id="arrow-right" class="material-symbols-outlined">arrow_circle_right</span></div>
+        <div id="liquidar">
 
-    <div id="lista-clientes">
-        <!-- Aqui va la lista de los Clientes  -->
+        </div>
+        <div class="cont-abono">
+            <label for="abono">Abono</label>
+            <input type="number" id="abono">
+        </div>
     </div>
-
-    <div class="cont-add-ruta">
-        <a href="#" id="add-cliente"><span class="material-symbols-outlined">person_add</span></a>
-    </div>
-
 </div>
-    <script src="src/js/clientes.js" type="module" ></script>
+    <script src="src/js/liquidar-cliente.js" type="module"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
                 const clienteDiv = document.createElement('div');
                 clienteDiv.classList.add('cliente-div')
                 clienteDiv.innerHTML = `
-                    <p>Posición en la Ruta: <span>${cliente.posicion}</span></p>
+                    <span class ='posicion-ruta'>${cliente.posicion}</span>
                     <p>Nombre: <span> ${cliente.nombreCliente} </span></p>
                     <p>Cédula: <span>${cliente.cedula}</span></p>
                     <p>Valor Préstamo: <span>${formatearValor(cliente.valor)}</span></p>
@@ -36,6 +36,10 @@
                     <p> <b>Total a Pagar:</b> <span>${formatearValor(cliente.totalPagar)}</span></p>
                 `;
                 listaClientes.appendChild(clienteDiv);
+
+                clienteDiv.addEventListener('click', ()=>{
+                    window.location.href = `liquidar-cliente.html?rutaId=${id}&id=${doc.id}`; // obtengo la id del cliente y de la ruta 
+                })
             });
         }
 
@@ -60,3 +64,5 @@
 contClientesRuta().then(cantidad => {
         console.log('cantidad de clientes es:::', cantidad);    
     });
+
+

@@ -28,7 +28,6 @@
                 <li><a href="index.html"><span class="material-symbols-outlined">home</span>Home</a></li>
                 <li><a href="rutas.html"><span class="material-symbols-outlined">route</span>Rutas</a></li>
                 <li><a href="" class="btn-menu"><span class="material-symbols-outlined relleno">user_attributes</span>User</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">pending</span>----</a></li>
                 <li><a href="#" id="salir-icon"><span class="material-symbols-outlined">output_circle</span>Salir</a></li>
             </ul>
         </nav>
@@ -77,10 +76,11 @@
                         </div>
                         <div class="interes">
                             <label for="interes">Interés %*</label>
-                            <select id="interes" name="interes" required>
+                            <input type="number" id="interes" name="interes" value="20" required>
+                            <!-- <select id="interes" name="interes" required>
                                 <option value="20">20</option>
                                 <option value="10">10</option>
-                            </select>
+                            </select> -->
                         </div>
                     </div> 
                     
@@ -91,7 +91,7 @@
                         </div>
                         <div class="cuota">
                             <label for="cuota"># Cuotas *</label>
-                            <input type="number" id="cuota" name="cuota" required>
+                            <input type="number" id="cuota" name="cuota" value="40" required>
                         </div>
                         
                     </div>
