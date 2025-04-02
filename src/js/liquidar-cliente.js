@@ -43,10 +43,27 @@ async function mostrarCliente() {
                     </div>
                     <p>Valor Préstamo: <span>${formatearValor(cliente.valor)}</span></p>
                     <p>Valor Seguro: <span>${formatearValor(cliente.seguro)}</span></p>
-                    <p> <b>Total a Pagar:</b> <span>${formatearValor(cliente.totalPagar)}</span></p>
-                    
+                    <div class="cont-abono">
+                        <label for="abono">Total a pagar</label>
+                        <input value='${formatearValor(cliente.totalPagar)}' id='total-pagar' disabled readonly>
+                        <label for="abono">Abono</label>
+                        <input type="number" id="abono">
+                        <button class='btn-principal'> Guardar </button>
                 `;
+
                 divLiquidarCliente.appendChild(divCliente);
+                 // Agregar event listener al input abono
+                 const inputAbono = document.getElementById('abono');
+                 const inputTotalPagar = document.getElementById('total-pagar');
+ 
+                 inputAbono.addEventListener('input', () => {
+                     const abono = parseFloat(inputAbono.value) || 0;
+                     const totalPagar = parseFloat(cliente.totalPagar);
+                     const nuevoTotalPagar = totalPagar - abono;
+ 
+                     inputTotalPagar.value = formatearValor(nuevoTotalPagar);
+                 });
+                
             } else {
                 console.log("No such document!");
             }
@@ -55,5 +72,25 @@ async function mostrarCliente() {
         console.error("Error getting document:", error);
     }
 }
+mostrarCliente();
 
-mostrarCliente()
+
+    const btnAddCliente = document.getElementById('add-cliente');
+
+    btnAddCliente.addEventListener('click', () => {
+        // Obtener la información de la ruta desde Firestore
+        const rutaRef = doc(db, 'nuevas-rutas', obtenerRutaId()); // Usar el id de la ruta de la url
+        getDoc(rutaRef).then((docSnap) => {
+            if (docSnap.exists()) {
+                const rutaData = docSnap.data();
+                // Redirigir a nuevo-cliente.html con los datos de la ruta
+                window.location.href = `nuevo-cliente.html?id=${obtenerRutaId()}&nombreRuta=${rutaData.nombreRuta}&responsableRuta=${rutaData.responsableRuta}`;
+            } else {
+                console.log('No se encontró el documento de la ruta');
+            }
+        }).catch((error) => {
+            console.error('Error al obtener el documento de la ruta:', error);
+        });
+    });
+
+
