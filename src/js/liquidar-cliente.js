@@ -1,6 +1,7 @@
-import { collection, onSnapshot, doc, getDoc, orderBy, query } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, onSnapshot, doc, getDoc, addDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import {db} from './firebase.js';
 import { formatearValor} from './functions.js';
+import {mensajes} from './mensajes.js';
 
 
 const divLiquidarCliente = document.getElementById('liquidar');
@@ -19,6 +20,7 @@ function obtenerParametrosURL() {
         id: urlParams.get('id')
     };
 }
+const rutaId = obtenerRutaId();
 
 const { id } = obtenerParametrosURL();
 
@@ -26,12 +28,13 @@ async function mostrarCliente() {
     try {
         // 1. Obtener la referencia del documento del cliente
         const clienteRef = doc(db, 'nuevas-rutas', obtenerRutaId(), 'clientes', id);
-
         // 2. Usar onSnapshot para escuchar los cambios en el documento
         onSnapshot(clienteRef, (docSnapshot) => {
-            if (docSnapshot.exists()) {
+                
+           if (docSnapshot.exists()) {
                 const cliente = docSnapshot.data();
                 const divCliente = document.createElement('div');
+                
                 divCliente.classList.add('div-cliente');
                 divCliente.innerHTML = `
                     <div>
@@ -45,24 +48,55 @@ async function mostrarCliente() {
                     <p>Valor Seguro: <span>${formatearValor(cliente.seguro)}</span></p>
                     <div class="cont-abono">
                         <label for="abono">Total a pagar</label>
-                        <input value='${formatearValor(cliente.totalPagar)}' id='total-pagar' disabled readonly>
+                        <input value='${formatearValor(cliente.totalPagar)}' id='saldo' disabled readonly>
                         <label for="abono">Abono</label>
                         <input type="number" id="abono">
-                        <button class='btn-principal'> Guardar </button>
+                        <button class='btn-principal' id="btn-guardar-abono"> Guardar</button>
                 `;
 
                 divLiquidarCliente.appendChild(divCliente);
                  // Agregar event listener al input abono
-                 const inputAbono = document.getElementById('abono');
-                 const inputTotalPagar = document.getElementById('total-pagar');
- 
-                 inputAbono.addEventListener('input', () => {
-                     const abono = parseFloat(inputAbono.value) || 0;
+                 const nuevoAbonoInput = document.getElementById('abono');
+                 const saldoAnteriorInput = document.getElementById('saldo');
+                 const btnGuardarAbono = document.getElementById('btn-guardar-abono');
+               
+                 nuevoAbonoInput.addEventListener('input', () => {
+                     const abono = parseFloat(nuevoAbonoInput.value) || 0;
                      const totalPagar = parseFloat(cliente.totalPagar);
-                     const nuevoTotalPagar = totalPagar - abono;
- 
-                     inputTotalPagar.value = formatearValor(nuevoTotalPagar);
+                     const saldoActual = totalPagar - abono;
+                     saldoAnteriorInput.value = formatearValor(saldoActual);
                  });
+
+                //  agregamos funcionamiento al boton de guardar
+                 
+                 btnGuardarAbono.addEventListener('click', async ()=>{
+                    const abono = parseFloat(nuevoAbonoInput.value);
+                    if(!isNaN(abono) && abono > 0 && abono <= parseFloat(cliente.totalPagar)){
+                        const abonoCollection = collection(db, 'nuevas-rutas', rutaId, 'clientes', id, 'abonos');
+                        try {
+                            await addDoc(abonoCollection, {
+                                fecha: serverTimestamp(),
+                                valorAbono: abono,
+                                saldoAnterior: cliente.totalPagar,
+                                saldoActual: parseFloat(cliente.totalPagar) - abono
+                            });
+                            divLiquidarCliente.innerHTML = '';
+                            await updateDoc(clienteRef, {
+                                totalPagar: parseFloat(cliente.totalPagar) - abono
+                            });     
+                            
+                            mensajes('Abono registrado con Éxito')
+                            
+                        } catch (error) {
+                            console.error('Error al guardar el abono:', error);
+                            mensajes('Error al registrar el abono.', 'fail');
+                        }
+                    } else{
+                        mensajes('Por favor, ingresa un valor de abono válido y no mayor al saldo.', 'fail');
+                    }
+  
+                 });
+
                 
             } else {
                 console.log("No such document!");
@@ -92,5 +126,7 @@ mostrarCliente();
             console.error('Error al obtener el documento de la ruta:', error);
         });
     });
+
+
 
 
