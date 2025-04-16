@@ -1,3 +1,10 @@
+:root{
+    --color-principal: #1B95D8;
+    --color-cards: #f9b872a8;
+    --color-botones: #E8771B;
+    --color-botones-alfa: #e8771ba4;
+}
+
 .cont-liquidar-clientes{
     display: flex;
     flex-direction: column;
@@ -11,11 +18,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px;
     background-color: rgba(160, 186, 255, 0.685);
     border-radius: 5px;
-    width: 70%;
+    width: 90%;
 }
 #liquidar{
     display: flex;
@@ -23,22 +30,19 @@
     align-items: center;
     width: 100%;
 }
-
-
 .div-cliente{
     display: flex;
     flex-direction: column;
     position: relative;
     width: 100%;
     padding-left: 10px;
-
 }
 
 .div-cliente p{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .div-cliente span{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 #posicion-ruta{
     display: flex;
@@ -60,19 +64,23 @@
 /* contenedor de las flechas left and right */
 .arrow-left{
     position: absolute;
-    left: 5px;
+    left: 7px;
 }
 .arrow-left span{
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #000000;
+    background-color: #fff;
+    border-radius: 50%;
 }
 .arrow-right{
     position: absolute;
-    right: 5px;
+    right: 7px;
 }
 .arrow-right span{
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #000000;
+    background-color: #fff;
+    border-radius: 50%;
 }
 /* ----------------------------------------- */
 
@@ -96,7 +104,7 @@
     right: 0;
     width: 50px;
     height: 50px;
-    background-color: #1b96d8be;
+    background-color: var(--color-botones-alfa);
     margin: 0 15px 95px 0;
 }
 #add-cliente span{
@@ -104,3 +112,67 @@
     color: #000000; 
 }
 /* -------------------------------------------- */
+
+/* Historial */
+#btn-historial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 2.2rem;
+    background-color: var(--color-botones-alfa);
+}
+
+/* modal historial de abonos */
+.cont-historial.hidden{
+    display: none;
+}
+
+.cont-historial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #0000009f;
+    z-index: 900;
+}
+.modal-historial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}   
+
+.tabla-abonos{
+    width: 95%;
+    margin: 10px;
+    background-color: #000;
+}
+.tabla-abonos thead{
+    background-color: #fff;
+    width: auto;
+}
+.tabla-abonos td{
+    text-align: center;
+    padding: 5px;
+    background-color: var(--color-botones);
+}
+#btn-cerrar{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 20px;
+    color: #fff;
+}
+
+#btn-cerrar span{
+    background-color: var(--color-botones);
+}

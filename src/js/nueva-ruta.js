@@ -45,4 +45,13 @@ btnGuardarRuta.addEventListener('click', async (e) =>{
     
 });
 
-
+// Previene que los inputs cambien su valor al hacer scroll con el Mouse 
+document.addEventListener('DOMContentLoaded', function() {
+    const inputsNumber = document.querySelectorAll('input[type="number"]');
+  
+    inputsNumber.forEach(function(input) {
+      input.addEventListener('wheel', function(event) {
+        event.preventDefault();
+      }, { passive: false });
+    });
+  });

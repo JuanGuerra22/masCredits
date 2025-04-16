@@ -32,7 +32,10 @@
         </nav>
     </section>
     <!-- ----------------- -->
-
+    <!-- Sipiner de carga  -->
+    <div id="spinner-container" class="spinner-container hidden">
+        <div class="spinner"></div>
+    </div>
     <!-- Banner  -->
     <section class="banner">
         <div class="cont-logo">
@@ -40,12 +43,22 @@
         </div>
     </section>
     <!-- --------- -->
-
+    <div class="cont-historial hidden" id="cont-historial">
+        <div id="btn-cerrar">
+            <span class="material-symbols-outlined">close</span>
+        </div>
+        <div class="modal-historial" id="modal-historial">
+            <h2>Historial de abonos</h2>
+            <!-- Aqui va el historial del cliente desde js -->
+        </div>
+    </div>
 
     <h1>Liquidar Cliente</h1>
     <div id="liquidar-cliente">
         <div class="arrow-left"><span id="arrow-left" class="material-symbols-outlined">arrow_circle_left</span></div>
         <div class="arrow-right"><span id="arrow-right" class="material-symbols-outlined">arrow_circle_right</span></div>
+        <span class="material-symbols-outlined" id='btn-historial'>receipt_long</span>
+
         <div id="liquidar">
             <!-- Aqui van los datos del cliente desde js -->
         </div>
@@ -56,6 +69,7 @@
     </div>
 
 </div>
+
     <script src="src/js/liquidar-cliente.js" type="module"></script>
     <!-- Script de Toastify -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

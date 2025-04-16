@@ -92,3 +92,4 @@ export async function calSaldoCartera(){
         return 0; // Devuelve 0 en caso de error
     }
 }
+
