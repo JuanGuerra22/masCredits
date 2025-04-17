@@ -93,3 +93,21 @@ export async function calSaldoCartera(){
     }
 }
 
+export async function saldoRuta(rutaId) {
+    try {
+        const clienteRef = collection(db, 'nuevas-rutas', rutaId, 'clientes');
+        const snapshot = await getDocs(clienteRef);
+        let valorTotal = 0
+
+        snapshot.forEach( (doc) => {
+            const cliente = doc.data();
+            if(cliente.totalPagar){
+                valorTotal += cliente.totalPagar;
+            }
+        });
+        return valorTotal;
+    } catch (error) {
+        console.error('Error al obtener el valor total del saldo en Ruta:', error);
+        return 0; // Devuelve 0 en caso de error
+    }
+}

@@ -1,3 +1,10 @@
+:root{
+    --color-principal: #1B95D8;
+    --color-principal-alfa: #1b96d871;
+    --color-cards: #faebd7;
+    --color-botones: #E8771B;
+    --color-botones-alfa: #e8771ba4;
+}
 .cont-rutas{
     display: flex;
     flex-direction: column;
@@ -20,7 +27,7 @@
     width: 90%;
     height: auto;
     min-height: 300px;
-    background-color: var(--color-cards);
+    background-color: var(--color-principal-alfa);
     border-radius: 10px;
 }
 
@@ -63,22 +70,95 @@
     padding: 10px 0;
 }
 
-.div-prueba{
+.div-ruta-activa{
     display: flex;
-    flex-direction: column;
-    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     height: auto;
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 10px;
+ 
 }
 
-.div-prueba p{
+.div-ruta-activa p{
     font-size: 1.2rem;
     font-weight: 500;
 }
-.div-prueba p span{
+.div-ruta-activa p span{
     font-size: 1.3rem;
     font-weight: 700;
 }
+.ruta-activa{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+   
+}
 /* ------------------------------------------------- */
+
+/* boton de mas informacion (...) */
+.more-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    border-radius: 10PX 0 0 10PX;
+    background-color: var(--color-cards);
+}
+.more-info .material-symbols-outlined{
+    font-size: 2.1rem;
+    color: var(--color-botones);
+}
+
+/* modal para mostrar la informacion complera de la ruta */
+.cont-modal-ruta.hidden{
+    display: none;
+}
+.cont-modal-ruta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: #00000080;
+    z-index: 900;
+}
+.modal-info-ruta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+#btn-cerrar{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 35px;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+#btn-cerrar span{
+    background-color: var(--color-botones);
+}
+.div-info-ruta{
+    width: 90%;
+    text-align: left;
+}
+.div-info-ruta p{
+    font-size: 1.2rem;
+}
+.div-info-ruta p span{
+    font-weight: 800;
+}
