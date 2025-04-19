@@ -54,37 +54,81 @@
 /* Diseño para los divs agregados para los clientes  */
 .cliente-div{
     display: flex;
-    position: relative;
-    flex-direction: column;
-    padding: 15px;
-    width: 80%;
+    width: 90%;
     background-color:#fff;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #5e5e5e;
 }
 
 .cliente-div p{
-    font-size: 1.2rem;
-}
-.cliente-div p span{
     font-size: 1.4rem;
     font-weight: 800;
 }
-
-
-.posicion-ruta{
+.info-cliente{
+    width: 100%;
+    padding: 10px;
+    padding-left: 20px;
+}
+/* Icono mas informacion */
+.more-info{
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: absolute;
-    width: 50px;
-    height: 50px;
+    align-items: center;
+    background-color: var(--color-cards);
+    border-radius: 10px 0 0 10px;
+    padding: 5px;
+}
+.more-info span{
+    font-size: 2.1rem;
+    color: var(--color-botones);
+}
+
+/* modal para mostrar la informacion complera de la ruta */
+.cont-modal-cliente.hidden{
+    display: none;
+}
+.cont-modal-cliente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #00000080;
+    z-index: 900;
+}
+.modal-info-cliente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: auto;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 1px 1px 5px #5e5e5e;
-    margin: 5px;
-    top: 0;
-    right: 0;
-    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+#btn-cerrar{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 35px;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+#btn-cerrar span{
+    background-color: var(--color-botones);
+}
+.div-info-cliente{
+    width: 90%;
+    text-align: left;
+}
+.div-info-cliente p{
+    font-size: 1.2rem;
+}
+.div-info-cliente p span{
     font-weight: 800;
-    background-color: var(--color-botones-alfa);
 }

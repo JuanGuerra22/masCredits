@@ -5,6 +5,9 @@ import { contClientesRuta, formatearValor } from './functions.js'
 
 const listaClientes = document.getElementById('lista-clientes');
 const btnAddCliente = document.getElementById('add-cliente');
+const contModal = document.getElementById('cont-modal-cliente');
+const contModalInfoCliente = document.getElementById('modal-info-cliente');
+const btnCerrar = document.getElementById('btn-cerrar');
 
 function obtenerParametrosURL() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -25,19 +28,49 @@ onSnapshot(q, (snapshot) => {
     } else {
         snapshot.forEach((doc) => {
             const cliente = doc.data();
+            const clienteId = doc.data(doc.id)
             const clienteDiv = document.createElement('div');
+            const moreInfoDiv = document.createElement('div');
+            const infoClientes = document.createElement('div');
             clienteDiv.classList.add('cliente-div')
-            clienteDiv.innerHTML = `
-                <span class ='posicion-ruta'>${cliente.posicion}</span>
-                <p>Nombre: <span> ${cliente.nombreCliente} </span></p>
-                <p>Cédula: <span>${cliente.cedula}</span></p>
-                <p>Valor Préstamo: <span>${formatearValor(cliente.valor)}</span></p>
-                <p>Valor Seguro: <span>${formatearValor(cliente.seguro)}</span></p>
-                <p> <b>Total a Pagar:</b> <span>${formatearValor(cliente.totalPagar)}</span></p>
+            moreInfoDiv.classList.add('more-info')
+            infoClientes.classList.add('info-cliente')
+            moreInfoDiv.innerHTML = `
+                <p ><span class="material-symbols-outlined" >info</span></p> 
+            `;
+            infoClientes.innerHTML = `
+                <p>${cliente.posicion} - <span> ${cliente.nombreCliente} </span></p>
+                <p>$ <span>${formatearValor(cliente.totalPagar)}</span></p>  
             `;
             listaClientes.appendChild(clienteDiv);
+            clienteDiv.appendChild(moreInfoDiv)
+            clienteDiv.appendChild(infoClientes)
 
-            clienteDiv.addEventListener('click', ()=>{
+            moreInfoDiv.addEventListener('click', () =>{
+                const fechaFormateada = new Date(clienteId.fechaCreacion.toDate()).toLocaleDateString();
+                contModal.classList.remove('hidden')
+                const divInfoCliente = document.createElement('div');
+                divInfoCliente.classList.add('div-info-cliente');
+                divInfoCliente.innerHTML = `
+                 <p>Nombre: <span>${clienteId.nombreCliente}</span></p>  
+                 <p>Cedula: <span>${clienteId.cedula}</span></p>  
+                 <p>Ciudad: <span>${clienteId.ciudad}</span></p>  
+                 <p>Fecha de Inicio: <span>${fechaFormateada}</span></p>  
+                 <p>Préstamo: $<span>${formatearValor(clienteId.valor)}</span></p>  
+                 <p>Seguro: $<span>${formatearValor(clienteId.seguro)}</span></p>  
+                 <p>Periodo: <span>${clienteId.periodo}</span></p>  
+                 <p>Cuotas: <span>${clienteId.cuota}</span></p>   
+                 <p>Saldo Actual: $<span>${formatearValor(clienteId.totalPagar)}</span></p>  
+                `;
+                contModalInfoCliente.appendChild(divInfoCliente)
+            })
+
+            btnCerrar.addEventListener('click', () =>{
+                contModal.classList.add('hidden');
+                contModalInfoCliente.innerHTML = '';
+            })
+
+            infoClientes.addEventListener('click', ()=>{
                 window.location.href = `liquidar-cliente.html?rutaId=${id}&id=${doc.id}`; // obtengo la id del cliente y de la ruta 
             })
         });

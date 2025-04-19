@@ -8,6 +8,7 @@ const divLiquidarCliente = document.getElementById('liquidar');
 const btnArrowLeft  = document.getElementById('arrow-left');
 const btnArrowRight  = document.getElementById('arrow-right');
 const spinner = document.getElementById('spinner-container');
+const contInfoCliente = document.getElementById('info-cliente');
 
 function obtenerRutaId() {
     // Obtener el id de la ruta desde la url.
@@ -35,18 +36,19 @@ async function mostrarCliente() {
            if (docSnapshot.exists()) {
                 const cliente = docSnapshot.data();
                 const divCliente = document.createElement('div');
-                
                 divCliente.classList.add('div-cliente');
-                divCliente.innerHTML = `
-                    <div>
-                    <span>Cliente:  ${cliente.nombreCliente} </span>
-                    <span> CC: ${cliente.cedula}</span>
-                    </div>
-                    <div id='posicion-ruta'>
-                    <p> ${cliente.posicion}</p>
-                    </div>
+                contInfoCliente.innerHTML=`
+                    <div class='infoC1'>
+                    <p> <span>${cliente.posicion} - </span>${cliente.nombreCliente}</p>
+                    <p><span>CC: </span>${cliente.cedula}</p>
+                    </div> 
+                    <div  class='infoC2'> 
                     <p>Préstamo Inicial: <span>${formatearValor(cliente.valor)}</span></p>
                     <p>Valor Seguro: <span>${formatearValor(cliente.seguro)}</span></p>
+                    <p>Ultimo Abono: <span id='span-ultimo-abono'> ...</span></p>
+                    </div> 
+                `;
+                divCliente.innerHTML = `
                     <div class="cont-abono">
                         <label for="abono">Total a pagar</label>
                         <input value='${formatearValor(cliente.totalPagar)}' id='saldo' disabled readonly>
@@ -75,6 +77,7 @@ async function mostrarCliente() {
                       event.preventDefault();
                     }, { passive: false });
                   }
+
                 //  agregamos funcionamiento al boton de guardar
                  
                  btnGuardarAbono.addEventListener('click', async ()=>{
@@ -117,6 +120,17 @@ async function mostrarCliente() {
     
 }
 mostrarCliente();
+
+// async function obtenerUltimoAbono(rutaId, clienteId) {
+//     const abonoRef =  collection('nuevas-rutas', rutaId, 'clientes', clienteId, 'abonos');
+//     const q = query(abonoRef, orderBy('fecha', 'desc'), limit(1));
+//     const snapshot = await getDocs(q);
+//     if (!snapshot.empty) {
+//         return snapshot.docs[0].data();
+//     } else {
+//         return null;
+//     }
+// }
 
 
     const btnAddCliente = document.getElementById('add-cliente');

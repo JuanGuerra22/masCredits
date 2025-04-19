@@ -1,5 +1,5 @@
 import {mensajes} from './mensajes.js';
-import { collection, doc, runTransaction, query, orderBy, getDocs, getCountFromServer } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, doc, runTransaction, query, orderBy, getDocs, getCountFromServer, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { db } from './firebase.js';
 import {obtenerParametrosURL} from './functions.js';
 
@@ -80,7 +80,8 @@ formulario.addEventListener('submit', async (e) => {
         cuota: parseInt(cuota.value),
         periodo: periodo.value,
         seguro: parseFloat(seguro.value) || 0, // Si seguro está vacío, guarda 0
-        totalPagar: parseFloat(totalPagar.value)
+        totalPagar: parseFloat(totalPagar.value),
+        fechaCreacion: serverTimestamp()
     };
 
     try {
